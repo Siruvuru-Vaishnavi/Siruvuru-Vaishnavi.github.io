@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #003366;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Mark Attendance</h2>
+    <form id="attendanceForm">
+        <label for="name">Student Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" value="<?= new Date().toISOString().split('T')[0] ?>" required>
+
+        <label for="status">Attendance Status</label>
+        <select id="status" name="status" required>
+            <option value="">Select</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result" style="margin-top: 20px; color: green;"></div>
+</div>
+
+<script>
+    document.getElementById('attendanceForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const date = document.getElementById('date').value;
+        const status = document.getElementById('status').value;
+        document.getElementById('result').innerText = `Attendance marked: ${name} - ${status} on ${date}`;
+        // Here you can send data to a server using fetch()
+    });
+</script>
+
+</body>
+</html>

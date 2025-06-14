@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Accommodation Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .center-box {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 18px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .option-box {
+  background-color: white;
+  border: 2px solid #003366;
+  border-radius: 8px;
+  width: 240px; /* increased from 200px */
+  padding: 25px; /* increased from 20px */
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.option-box .title {
+  font-size: 18px; /* increased from 16px */
+  font-weight: bold;
+  margin-bottom: 12px; /* slightly increased */
+}
+
+.options a {
+  display: block;
+  text-decoration: none;
+  color: #003366;
+  margin: 6px 0; /* slightly increased */
+  font-size: 16px; /* increased from 14px */
+}
+
+  
+  </style>
+</head>
+<body>
+
+<header>🎓 Hostel Management Dashboard</header>
+
+<div class="container">
+  <script>
+  window.onload = function() {
+    const bookedHostel = localStorage.getItem("bookedHostel");
+    if (bookedHostel) {
+      document.getElementById("booked-info").innerText = "📌 You have booked: " + bookedHostel;
+    }
+  };
+</script>
+
+<div id="booked-info" style="
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #003366;
+    font-weight: bold;
+"></div>
+<div class="container">
+
+  <div class="center-box">🏨 Student Accommodation</div>
+
+  <div class="grid">
+    <div class="option-box" onclick="toggleOptions('room-options')">
+      <div class="title">🏠 Room Management</div>
+      <div id="room-options" class="options">
+        <a href="view-rooms.html">View Rooms</a>
+        <a href="assign-room.html">Assign Room</a>
+      </div>
+    </div>
+
+    <div class="option-box" onclick="toggleOptions('leave-options')">
+      <div class="title">📆 Leave Manager</div>
+      <div id="leave-options" class="options">
+        <a href="apply-leave.html">Apply Leave</a>
+        <a href="approve-requests.html">Approve Requests</a>
+        <a href="leave-status.html">Leave History</a>
+      </div>
+    </div>
+
+    <div class="option-box" onclick="toggleOptions('attendance-options')">
+      <div class="title">📋 Attendance</div>
+      <div id="attendance-options" class="options">
+        <a href="view-attendance.html">View Attendance</a>
+      </div>
+    </div>
+
+    <div class="option-box" onclick="toggleOptions('maintenance-options')">
+      <div class="title">🔧 Maintenance</div>
+      <div id="maintenance-options" class="options">
+        <a href="request-maintenance.html">Request</a>
+        <a href="track-maintenance.html">Tracker</a>
+      </div>
+    </div>
+
+    <div class="option-box" onclick="toggleOptions('qr-options')">
+      <div class="title">📲 Check-ins</div>
+      <div id="qr-options" class="options">
+        <a href="checkin-history.html">History</a>
+      </div>
+    </div>
+
+    <div class="option-box" onclick="toggleOptions('mess-options')">
+      <div class="title">🍽️ Mess and Bill</div>
+      <div id="mess-options" class="options">
+        <a href="view-menu.html">Menu</a>
+        <a href="feedback.html">Feedback</a>
+       <a href="monthly-bill.html">Monthly Bill</a>
+
+
+      </div>
+    </div>
+
+   
+
+<script>
+  function toggleOptions(id) {
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>

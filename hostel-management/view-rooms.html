@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Rooms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .room-options {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .room-options h2 {
+            margin-bottom: 20px;
+            color: #003366;
+        }
+        .room-options label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .room-options select, .room-options button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<header>🏠 View Rooms</header>
+
+<div class="room-options">
+    <h2>Select Room Options</h2>
+    
+    <label for="floor">Select Floor:</label>
+    <select id="floor">
+        <option>Ground Floor</option>
+        <option>1st Floor</option>
+        <option>2nd Floor</option>
+        <option>3rd Floor</option>
+    </select>
+
+    <label for="type">Select Room Type:</label>
+    <select id="type">
+        <option>Single</option>
+        <option>2-Sharing</option>
+        <option>3-Sharing</option>
+        <option>4-Sharing</option>
+    </select>
+
+    <label for="availability">Availability:</label>
+    <select id="availability">
+        <option>Available</option>
+        <option>Occupied</option>
+    </select>
+
+    <button onclick="goToAssignRoom()">Search Rooms</button>
+</div>
+
+<script>
+function goToAssignRoom() {
+    const floor = document.getElementById('floor').value;
+    const type = document.getElementById('type').value;
+    const availability = document.getElementById('availability').value;
+
+    // Save selected room type in localStorage
+    localStorage.setItem("roomType", type);
+    
+    // Optional: you may also want to save floor or availability
+    // localStorage.setItem("roomFloor", floor);
+    // localStorage.setItem("roomAvailability", availability);
+
+    window.location.href = "assign-room.html"; // continue to assign room if needed
+}
+</script>
+
+
+</body>
+</html>

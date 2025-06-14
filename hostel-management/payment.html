@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Make Payment</h2>
+
+  <p><strong>Month:</strong> <span id="month"></span></p>
+  <p><strong>Amount:</strong> ₹<span id="amount"></span></p>
+
+  <label for="accountId">Enter Your Account ID / Phone Number:</label>
+  <input type="text" id="accountId" placeholder="e.g., 9876543210">
+
+  <label for="mode">Select Payment Mode:</label>
+  <select id="mode">
+    <option value="">-- Select --</option>
+    <option value="UPI">UPI</option>
+    <option value="Credit Card">Credit Card</option>
+    <option value="Net Banking">Net Banking</option>
+  </select>
+
+  <button onclick="completePayment()">Pay Now</button>
+</div>
+
+<script>
+  const month = localStorage.getItem("payMonth") || "N/A";
+  const amount = localStorage.getItem("payAmount") || "0";
+
+  document.getElementById("month").innerText = month;
+  document.getElementById("amount").innerText = amount;
+
+  function completePayment() {
+    const accountId = document.getElementById("accountId").value.trim();
+    const mode = document.getElementById("mode").value;
+
+    if (!accountId || accountId.length < 8) {
+      alert("❌ Please enter a valid Account ID or phone number.");
+      return;
+    }
+
+    if (!mode) {
+      alert("❌ Please select a payment mode.");
+      return;
+    }
+
+    alert(`✅ ₹${amount} successfully deducted from Account ID ${accountId} via ${mode} for ${month}.`);
+    let paidMonths = JSON.parse(localStorage.getItem("paidMonths") || "[]");
+if (!paidMonths.includes(month)) {
+  paidMonths.push(month);
+  localStorage.setItem("paidMonths", JSON.stringify(paidMonths));
+}
+
+    window.location.href = "my-account.html";
+  }
+</script>
+
+</body>
+</html>

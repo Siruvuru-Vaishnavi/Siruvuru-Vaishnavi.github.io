@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Track Maintenance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #003366;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .status-pending {
+      color: orange;
+      font-weight: bold;
+    }
+    .status-completed {
+      color: green;
+      font-weight: bold;
+    }
+    .status-scheduled {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🛠️ Maintenance Request Tracker</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request ID</th>
+      <th>Room No.</th>
+      <th>Issue</th>
+      <th>Scheduled Date</th>
+      <th>Scheduled Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="requestTableBody">
+    <!-- JS will insert rows here -->
+  </tbody>
+</table>
+<script>
+  const requests = JSON.parse(localStorage.getItem("maintenanceRequests") || "[]");
+  const tbody = document.getElementById("requestTableBody");
+
+  requests.forEach(req => {
+    const tr = document.createElement("tr");
+
+    let statusClass = "";
+    if (req.status === "Scheduled") {
+      statusClass = "status-scheduled";
+    } else if (req.status === "Completed") {
+      statusClass = "status-completed";
+    } else {
+      statusClass = "status-pending";
+    }
+
+    tr.innerHTML = `
+      <td>${req.id}</td>
+      <td>${req.room}</td>
+      <td>${req.issue} - ${req.description}</td>
+      <td>${req.date}</td>
+      <td>${req.time}</td>
+      <td class="${statusClass}">${req.status}</td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>

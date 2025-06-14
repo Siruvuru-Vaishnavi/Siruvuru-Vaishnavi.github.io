@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request Maintenance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    form {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #003366;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      margin-top: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0055aa;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔧 Request Maintenance</h2>
+  <form action="#" method="post">
+    <label for="student-name">Your Name</label>
+    <input type="text" id="student-name" name="student-name" required>
+
+    <label for="room-number">Room Number</label>
+    <input type="text" id="room-number" name="room-number" required>
+
+    <label for="issue-type">Type of Issue</label>
+    <select id="issue-type" name="issue-type" required>
+      <option value="">--Select--</option>
+      <option value="Electrical">Electrical</option>
+      <option value="Plumbing">Plumbing</option>
+      <option value="Furniture">Furniture</option>
+      <option value="Cleaning">Cleaning</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="description">Describe the Problem</label>
+    <textarea id="description" name="description" rows="4" placeholder="E.g., Light not working, water leak in bathroom..." required></textarea>
+
+    <button type="submit">Submit Request</button>
+  </form>
+  <script>
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("student-name").value.trim();
+    const room = document.getElementById("room-number").value.trim();
+    const issue = document.getElementById("issue-type").value;
+    const description = document.getElementById("description").value.trim();
+
+    const existing = JSON.parse(localStorage.getItem("maintenanceRequests") || "[]");
+
+    // Simulate schedule assignment (random future date and time)
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + Math.floor(Math.random() * 5) + 1);
+    const dateStr = futureDate.toISOString().split('T')[0];
+    const timeStr = `${Math.floor(Math.random() * 8 + 9)}:${Math.random() < 0.5 ? '00' : '30'} AM`;
+
+    const newRequest = {
+      id: Date.now(),
+      room,
+      issue,
+      description,
+      date: dateStr,
+      time: timeStr,
+      status: "Scheduled"
+    };
+
+    existing.push(newRequest);
+    localStorage.setItem("maintenanceRequests", JSON.stringify(existing));
+
+    alert("✅ Maintenance request submitted successfully!");
+    this.reset();
+  });
+</script>
+
+
+
+</body>
+</html>

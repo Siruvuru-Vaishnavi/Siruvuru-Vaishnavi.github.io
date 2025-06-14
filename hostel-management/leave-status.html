@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #003366;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            color: #003366;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📆 Your Leave History</h1>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>2025-05-10</td>
+            <td>Family Function</td>
+            <td>Approved</td>
+        </tr>
+        <tr>
+            <td>2025-04-02</td>
+            <td>Medical</td>
+            <td>Rejected</td>
+        </tr>
+        <tr>
+            <td>2025-03-15</td>
+            <td>Personal</td>
+            <td>Pending</td>
+        </tr>
+    </table>
+
+    <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+
+</body>
+</html>

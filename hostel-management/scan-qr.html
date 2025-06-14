@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scan QR - Check-in</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    #reader {
+      width: 300px;
+      margin: auto;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h2>📲 Scan QR Code to Check In</h2>
+<div id="reader"></div>
+<div id="result"></div>
+
+<script>
+  function onScanSuccess(decodedText, decodedResult) {
+    document.getElementById('result').innerHTML =
+      "<h3>✅ Check-in Successful</h3>" +
+      "<p><strong>Details:</strong></p>" +
+      "<pre>" + decodedText + "</pre>";
+    html5QrcodeScanner.clear(); // stop scanning after success
+  }
+
+  function onScanError(errorMessage) {
+    // ignore or log error
+  }
+
+  const html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+  html5QrcodeScanner.render(onScanSuccess, onScanError);
+</script>
+
+</body>
+</html>

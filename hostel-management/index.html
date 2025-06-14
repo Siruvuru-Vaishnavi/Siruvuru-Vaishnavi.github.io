@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('LB.jpeg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: rgba(62, 61, 63, 0.9);
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        input, button {
+            width: 90%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #000000;
+            color: rgb(236, 236, 236);
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0a75c2;
+        }
+        a {
+            text-decoration: none;
+            color: #0d0d0e;
+        }
+    </style>
+   <script>
+function login() {
+  let username = localStorage.getItem('username');
+  let password = localStorage.getItem('password');
+  let inputUser = document.getElementById('username').value;
+  let inputPass = document.getElementById('password').value;
+
+  if (inputUser === username && inputPass === password) {
+    if (localStorage.getItem("pendingLogin") === "true") {
+      localStorage.removeItem("pendingLogin");
+    }
+   window.location.href = "home.html";
+ // ← go to home page after login
+  } else {
+    alert("⚠️ Invalid credentials or account not created!");
+  }
+}
+</script>
+</head>
+<body>
+    <div class="container">
+        <h2>🔑 Login</h2>
+        <input type="text" id="username" placeholder="👤 Username" required>
+        <input type="password" id="password" placeholder="🔒 Password" required>
+        <button onclick="login()">Sign In</button>
+        <p><a href="signup.html">➕ Create Account</a></p>
+        <p><a href="forgot.html">🔄 Forgot Password?</a></p>
+    </div>
+    <div style="text-align: center; margin-top: 15px;">
+        <a href="index.html" style="text-decoration: none;">
+            <button style="padding: 10px; background: #6c757d; color: white; border: none; border-radius: 5px; font-size: 14px;">
+                ⬅ Back to Home
+            </button>
+        </a>
+    </div>
+    
+</body>
+</html>

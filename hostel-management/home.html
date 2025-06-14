@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('IB.jpeg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(0, 77, 153, 0.8);
+            color: rgb(235, 223, 223);
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            border-bottom: 5px solid #003366;
+        }
+        .quote {
+            text-align: center;
+            font-size: 20px;
+            font-style: italic;
+            color: #fff;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .hostel-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .hostel {
+            background: rgba(141, 128, 218, 0.9);
+            width: 300px;
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .hostel h3 {
+            color: #e2e5e9;
+        }
+        .details-btn, .book-btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .details-btn:hover, .book-btn:hover {
+            background: #003366;
+        }
+        .details {
+            margin-top: 10px;
+            text-align: left;
+        }
+        .about, .contact {
+            background: rgba(31, 30, 30, 0.8);
+            color: #e8ecf0;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function toggleDetails(id) {
+            var details = document.getElementById(id);
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function bookHostel(name) {
+            alert(name + " booked successfully!");
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    🏠 Hostel Management System
+    <a href="dashboard.html" style="float: right; margin-right: 30px; text-decoration: none;">
+        <button style="padding: 8px 14px; background: #28a745; color: white; border: none; border-radius: 5px; font-size: 14px; cursor: pointer;">
+            📊 Go to Dashboard
+        </button>
+    </a>
+</header>
+
+<div class="container">
+    <div class="hostel-list">
+
+        <div class="hostel">
+            <h3>Sunrise Hostel 🌞</h3>
+            <button class="details-btn" onclick="toggleDetails('sunrise-details')">View Details</button>
+            <div class="details" id="sunrise-details">
+                <p>Single: ₹9500 | 2-Sharing: ₹8500 | 3-Sharing: ₹7500 | 4-Sharing: ₹6500</p>
+                <p>Address: Miyapur</p>
+                <p>AC Available: Yes</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Email: sunrise@hostel.com</p>
+                <p>Ratings: ⭐⭐⭐⭐</p>
+            </div>
+            <button class="book-btn" onclick="bookHostel('Sunrise Hostel')">Book Now</button>
+        </div>
+
+        <div class="hostel">
+            <h3>Blue Heaven 🏡</h3>
+            <button class="details-btn" onclick="toggleDetails('blueheaven-details')">View Details</button>
+            <div class="details" id="blueheaven-details">
+                <p>Single: ₹10000 | 2-Sharing: ₹9000 | 3-Sharing: ₹8000 | 4-Sharing: ₹7500</p>
+                <p>Address: Kukatpally</p>
+                <p>AC Available: No</p>
+                <p>Phone: +91 87654 32109</p>
+                <p>Email: blueheaven@hostel.com</p>
+                <p>Ratings: ⭐⭐⭐⭐⭐</p>
+            </div>
+            <button class="book-btn" onclick="bookHostel('Blue Heaven')">Book Now</button>
+        </div>
+
+        <div class="hostel">
+            <h3>Green Stay 🌿</h3>
+            <button class="details-btn" onclick="toggleDetails('greenstay-details')">View Details</button>
+            <div class="details" id="greenstay-details">
+                <p>Single: ₹9800 | 2-Sharing: ₹8600 | 3-Sharing: ₹7900 | 4-Sharing: ₹7000</p>
+                <p>Address: JNTU</p>
+                <p>AC Available: Yes</p>
+                <p>Phone: +91 76543 21098</p>
+                <p>Email: greenstay@hostel.com</p>
+                <p>Ratings: ⭐⭐⭐⭐</p>
+            </div>
+            <button class="book-btn" onclick="bookHostel('Green Stay')">Book Now</button>
+        </div>
+
+        <div class="hostel">
+            <h3>Royal Nest 👑</h3>
+            <button class="details-btn" onclick="toggleDetails('royalnest-details')">View Details</button>
+            <div class="details" id="royalnest-details">
+                <p>Single: ₹9700 | 2-Sharing: ₹8900 | 3-Sharing: ₹7700 | 4-Sharing: ₹6900</p>
+                <p>Address: Nizampet</p>
+                <p>AC Available: Yes</p>
+                <p>Phone: +91 65432 10987</p>
+                <p>Email: royalnest@hostel.com</p>
+                <p>Ratings: ⭐⭐⭐⭐⭐</p>
+            </div>
+            <button class="book-btn" onclick="bookHostel('Royal Nest')">Book Now</button>
+        </div>
+
+        <div class="hostel">
+            <h3>Elite Living 🌟</h3>
+            <button class="details-btn" onclick="toggleDetails('eliteliving-details')">View Details</button>
+            <div class="details" id="eliteliving-details">
+                <p>Single: ₹9500 | 2-Sharing: ₹8500 | 3-Sharing: ₹7500 | 4-Sharing: ₹6500</p>
+                <p>Address: Hitech City</p>
+                <p>AC Available: Yes</p>
+                <p>Phone: +91 84321 09876</p>
+                <p>Email: eliteliving@hostel.com</p>
+                <p>Ratings: ⭐⭐⭐</p>
+            </div>
+            <button class="book-btn" onclick="bookHostel('Elite Living')">Book Now</button>
+        </div>
+
+    </div>
+</div>
+
+<div class="about">
+    <h2>About Us</h2>
+    <p>Welcome to our Hostel Management System. We provide affordable and comfortable accommodations for students and professionals.</p>
+</div>
+
+<div class="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Location: 123, Hostel Avenue, Bengaluru</p>
+    <p>📞 Phone: +91 98765 43210</p>
+    <p>✉️ Email: info@hostelmanagement.com</p>
+</div>
+
+</body>
+</html>

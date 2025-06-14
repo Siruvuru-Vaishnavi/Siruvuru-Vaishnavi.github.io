@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('LB.jpeg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: rgba(167, 132, 132, 0.9);
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        input, button {
+            width: 90%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #030303;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e0a800;
+        }
+        a {
+            text-decoration: none;
+            color: #0f0f0f;
+        }
+    </style>
+    <script>
+        function resetPassword() {
+            alert("📩 Password reset link sent to your email/phone!");
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>🔄 Forgot Password</h2>
+        <input type="text" placeholder="📞 Phone Number or 📧 Email" required>
+        <button onclick="resetPassword()">Send Reset Link</button>
+        <p><a href="login.html">🔙 Back to Login</a></p>
+    </div>
+</body>
+</html>

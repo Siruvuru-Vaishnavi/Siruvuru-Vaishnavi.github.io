@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Monthly Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #003366;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #999;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+        }
+        .present {
+            background-color: #d4edda;
+        }
+        .absent {
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📅 View Monthly Attendance</h2>
+
+<form onsubmit="event.preventDefault(); generateAttendance();">
+    <label>Month:</label>
+    <input type="number" id="month" min="1" max="12" required>
+    <label>Year:</label>
+    <input type="number" id="year" min="2000" max="2100" required>
+    <button type="submit">View Attendance</button>
+</form>
+
+<div id="attendance-table"></div>
+
+<script>
+function generateAttendance() {
+    const month = parseInt(document.getElementById('month').value);
+    const year = parseInt(document.getElementById('year').value);
+    const tableDiv = document.getElementById('attendance-table');
+    tableDiv.innerHTML = '';
+
+    if (!month || !year) {
+        alert('Please enter valid month and year.');
+        return;
+    }
+
+    const daysInMonth = new Date(year, month, 0).getDate();
+
+    let html = '<table><tr><th>Date</th><th>Status</th></tr>';
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        const status = Math.random() > 0.3 ? 'Present' : 'Absent'; // Simulate
+        html += `<tr class="${status.toLowerCase()}"><td>${day}-${month}-${year}</td><td>${status}</td></tr>`;
+    }
+
+    html += '</table>';
+    tableDiv.innerHTML = html;
+}
+</script>
+
+</body>
+</html>

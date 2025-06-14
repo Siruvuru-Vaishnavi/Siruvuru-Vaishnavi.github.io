@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('LB.jpeg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: rgba(134, 114, 114, 0.9);
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        input, button {
+            width: 90%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #000000;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+    <script>
+        function createAccount() {
+            let username = document.getElementById('name').value;
+            let password = document.getElementById('password').value;
+            let phone = document.getElementById('phone').value;
+            let email = document.getElementById('email').value;
+
+            if (username && password && phone && email) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                alert("✅ Account created successfully!");
+                window.location.href = "login.html";
+            } else {
+                alert("⚠️ Please fill all fields!");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📝 Create Account</h2>
+        <input type="text" id="name" placeholder="📛 Full Name" required>
+        <input type="email" id="email" placeholder="📧 Email" required>
+        <input type="tel" id="phone" placeholder="📞 Phone Number" required>
+        <input type="password" id="password" placeholder="🔒 Create Password" required>
+        <button onclick="createAccount()">Register</button>
+        <p><a href="login.html">🔙 Back to Login</a></p>
+    </div>
+
+</body>
+</html>
